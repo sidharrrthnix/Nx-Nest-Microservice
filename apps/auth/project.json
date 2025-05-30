@@ -8,6 +8,9 @@
     "build": {
       "dependsOn": ["generate-prisma", "migrate-prisma"]
     },
+    "test": {
+      "dependsOn": ["generate-prisma", "migrate-prisma"]
+    },
     "serve": {
       "continuous": true,
       "executor": "@nx/js:node",
@@ -36,11 +39,6 @@
       "command": "prisma migrate dev",
       "options": {
         "cwd": "{projectRoot}"
-      }
-    },
-    "test": {
-      "options": {
-        "passWithNoTests": true
       }
     }
   }
