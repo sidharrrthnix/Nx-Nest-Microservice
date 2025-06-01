@@ -6,7 +6,7 @@
   "tags": [],
   "targets": {
     "build": {
-      "dependsOn": ["generate-prisma", "migrate-prisma"]
+      "dependsOn": ["generate-prisma", "migrate-prisma", "generate-ts-proto"]
     },
     "test": {
       "dependsOn": ["generate-prisma", "migrate-prisma"]
@@ -32,14 +32,19 @@
     "generate-prisma": {
       "command": "prisma generate",
       "options": {
-        "cwd": "apps/auth"
-      }
+        "cwd": "{projectRoot}",
+        "input": ["prisma/schema.prisma"]
+      },
+      "cache": true
     },
     "migrate-prisma": {
       "command": "prisma migrate dev",
       "options": {
         "cwd": "{projectRoot}"
       }
+    },
+    "generate-ts-proto": {
+      "command": "nx generate-ts-proto"
     }
   }
 }
